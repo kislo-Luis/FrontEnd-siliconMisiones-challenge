@@ -1,11 +1,13 @@
+import { NavBar } from "./components/NavBar/NavBar";
+
+// //import { Home } from "./pages/home/Home";
+import { Outlet } from "react-router-dom";
+
 function App() {
   return (
     <div>
-      <header>
-        <div>
-          <img alt="logo" src="/logo-black.jpeg" width={1300} />
-        </div>
-      </header>
+      <NavBar />
+      <Outlet />
     </div>
   );
 }
