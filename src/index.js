@@ -1,33 +1,48 @@
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import { Login } from "./pages/login/Login";
-import { Cursos } from "./pages/cursos/Cursos";
 import { Home } from "./pages/home/Home";
-
+import { Layout } from "./layout/Layout";
 import "bootstrap/dist/css/bootstrap.css";
+import SiliCourses from "./pages/cursos/Silicourses";
+import CoursesCrud from './pages/CRUD/CoursesCrud'
+import EditCourses from "./pages/CRUD/EditCourses";
+
+
 
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Layout />,
 
     children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
       {
         path: "/login",
         element: <Login />,
       },
       {
         path: "/cursos",
-        element: <Cursos />,
+        element: <SiliCourses />,
       },
+
+      
       {
-        path: "/home",
-        element: <Home />,
+        path: "/cursosCrud",
+        element:  <CoursesCrud />
       },
+
+      {
+        path: "/edit/:id",
+        element:  <EditCourses />
+      },
+      
+      
     ],
   },
 ]);
