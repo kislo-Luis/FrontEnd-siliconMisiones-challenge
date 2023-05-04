@@ -1,12 +1,13 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Login } from "./pages/login/Login";
+
 import { Home } from "./pages/home/Home";
 import { Layout } from "./layout/Layout";
 import "bootstrap/dist/css/bootstrap.css";
 import SiliCourses from "./pages/cursos/Silicourses";
 import CoursesCrud from './pages/CRUD/CoursesCrud'
 import EditCourses from "./pages/CRUD/EditCourses";
+import LoginFormModal from "./pages/login/LoginFormModal";
 
 
 
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />,
+        element: <LoginFormModal />,
       },
       {
         path: "/cursos",

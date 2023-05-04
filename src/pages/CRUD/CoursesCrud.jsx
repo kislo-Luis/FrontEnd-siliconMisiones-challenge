@@ -46,6 +46,7 @@ const CoursesCrud = () => {
           <Link to={`/edit/${id}`} className="btn btn-warning">
             Editar
           </Link>
+         
           {"  "}
           <Button color="danger" onClick={() => handleDelete(id)}>
             Eliminar
@@ -89,13 +90,16 @@ const CoursesCrud = () => {
     anio: "" || 2023,
     activo: "" || true,
   });
+
   const handleChange = (e) => {
+    e.preventDefault();
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
     console.log(e.target.value);
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(form);
@@ -107,10 +111,18 @@ const CoursesCrud = () => {
       });
       alert("registro creado");
       toggle();
+      const getCourses = async () => {
+        const url = "http://localhost:4000/cursos";
+        const result = await axios.get(url);
+        setListCourses(result.data);
+      };
+      getCourses();
     } catch (error) {
       console.error(error);
     }
   };
+
+  
 
   return (
     <>
@@ -119,7 +131,7 @@ const CoursesCrud = () => {
       <Button color="primary" onClick={toggle}>
         + Nuevo curso:
       </Button>
-      <DataTable columns={columns} data={courses} selectableRows></DataTable>
+      <DataTable columns={columns} data={courses}></DataTable>
 
       <Modal isOpen={modal}>
         <ModalHeader toggle={toggle}>Crear nuevo curso</ModalHeader>
@@ -197,6 +209,8 @@ const CoursesCrud = () => {
           </Button>
         </ModalFooter>
       </Modal>
+
+      
     </>
   );
 };

@@ -29,7 +29,7 @@ function SiliCourses() {
             key={curso.id}
             title={curso.nombre}
             content={curso.descripcion}
-            img={curso.imagen||"code-card.jpg"}
+            img={"code-card.jpg"}
             
             
           />
