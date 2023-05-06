@@ -1,0 +1,17 @@
+.container{  
+    align-items: center;
+    background-color:aliceblue;
+    margin-top: 5rem;
+ }
+
+.buttons{    
+    justify-content:space-evenly;
+}
+
+.button{
+    margin-top: 5rem;
+    margin-left: 0.5rem;
+    display: flex;
+    
+   
+}

@@ -1,22 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { Navbar as NavbarReacstrap, } from "reactstrap";
-//import { useState } from "react";
+import { Navbar as NavbarReacstrap } from "reactstrap";
 import { ButonModal } from "../Modal/ButonModal";
 
-
 export const Navbar = () => {
-  // const [soyAdmin, setSoyAdmin]= useState(false);
-
-  // const handleAdmin = ()=>{
-  //   localStorage.setItem("SoyElAdmin", true);
-  //   setSoyAdmin(true);
-  // }
-  // const [isLogin, setLogin] = useState(false);
-  // const handleRemoveAdmin = () => {
-  //   localStorage.removeItem("SoyElAdmin");
-  //   setLogin(false);
-  // };
-
   return (
     <div className="bar">
       <NavbarReacstrap>
@@ -29,24 +15,8 @@ export const Navbar = () => {
         </NavLink>
 
         <NavLink to="/cursos">Cursos</NavLink>
-        <NavLink to="/cursosCrud">AdminCursos</NavLink>        
+        <NavLink to="/cursosCrud">AdminCursos</NavLink>
         <ButonModal />
-
-        {/* <NavLink to="/Login">
-          <img
-            alt="logo"
-            src="/icon-logo-circular.ico"
-            style={{ height: 40, width: 40 }}
-          />
-        </NavLink>
-
-        <Button onClick={handleRemoveAdmin}>cerrar todo</Button> */}
-
-        {/* {soyAdmin?(
-          
-        ):(
-          <Button onClick={handleAdmin}>PERMISOY EL ADMIN</Button>
-        )} */}
       </NavbarReacstrap>
     </div>
   );

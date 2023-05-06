@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import "./Carrusel.css";
 
 import {
   Carousel,
@@ -6,27 +7,24 @@ import {
   CarouselControl,
   CarouselIndicators,
   CarouselCaption,
-} from 'reactstrap';
+} from "reactstrap";
 
 const items = [
   {
-    src: '/edificio.jpeg',      
-    altText: 'Slide 1',
-    caption: 'Slide 1',
+    src: "/edificio.jpeg",
+    altText: "Slide 1",
+    caption: "Slide 1",
     key: 1,
   },
   {
-    src: '/alumnos.jpeg',
-    altText: 'Slide 2',
-    caption: 'Slide 2',
+    src: "/alumnos.jpeg",
+    altText: "Slide 2",
+    caption: "Slide 2",
     key: 2,
   },
- 
 ];
 
-
-export const  Carrusel = (args)=> {
- 
+export const Carrusel = (args) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -64,7 +62,7 @@ export const  Carrusel = (args)=> {
   });
 
   return (
-    <Carousel 
+    <Carousel
       activeIndex={activeIndex}
       next={next}
       previous={previous}
@@ -76,11 +74,13 @@ export const  Carrusel = (args)=> {
         onClickHandler={goToIndex}
       />
       {slides}
+
       <CarouselControl
         direction="prev"
         directionText="Previous"
         onClickHandler={previous}
       />
+
       <CarouselControl
         direction="next"
         directionText="Next"
@@ -88,4 +88,4 @@ export const  Carrusel = (args)=> {
       />
     </Carousel>
   );
-}
+};

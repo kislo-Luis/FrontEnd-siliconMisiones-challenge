@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, ModalFooter, Label, Input, Form, FormGroup } from "reactstrap";
+import "./EditCourses.css";
 
 const EditCourses = () => {
   const { id } = useParams();
@@ -57,7 +58,8 @@ const EditCourses = () => {
 
   return (
     <>
-      <Form>
+    <div className="container">
+      <Form >
         <FormGroup>
           <Label for="nombre">Nombre</Label>
           <Input
@@ -118,16 +120,22 @@ const EditCourses = () => {
           />
         </FormGroup>
       </Form>
-
+     
       <ModalFooter>
+      <div className="buttons">
         <Button color="success" type="submit" onClick={update}>
           confirmar datos{" "}
         </Button>
+      
         {"  "}
         <Button color="secondary" onClick={voltate}>
           Cancelar
         </Button>
+      </div> 
       </ModalFooter>
+      
+
+      </div>
     </>
   );
 };

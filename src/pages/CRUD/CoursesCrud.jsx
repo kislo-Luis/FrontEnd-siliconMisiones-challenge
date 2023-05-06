@@ -14,6 +14,7 @@ import {
   Form,
   FormGroup,
 } from "reactstrap";
+import "./CoursesCrud.css";
 
 const CoursesCrud = () => {
   const columns = [
@@ -43,10 +44,10 @@ const CoursesCrud = () => {
       name: "Acciones",
       selector: ({ id }) => (
         <>
-          <Link to={`/edit/${id}`} className="btn btn-warning">
+          <Link to={`/edit/${id}`} className="btn btn-success">
             Editar
           </Link>
-         
+
           {"  "}
           <Button color="danger" onClick={() => handleDelete(id)}>
             Eliminar
@@ -122,16 +123,21 @@ const CoursesCrud = () => {
     }
   };
 
-  
-
   return (
     <>
       {courses.length === 0 && <p>cargando...</p>}
 
-      <Button color="primary" onClick={toggle}>
-        + Nuevo curso:
-      </Button>
-      <DataTable columns={columns} data={courses}></DataTable>
+      <div className="container">
+        <div className="button">
+        <Button color="primary" onClick={toggle}>
+          + Nuevo curso:
+        </Button>
+        </div>
+
+        <div className="table">
+          <DataTable columns={columns} data={courses}></DataTable>
+        </div>
+      </div>
 
       <Modal isOpen={modal}>
         <ModalHeader toggle={toggle}>Crear nuevo curso</ModalHeader>
@@ -209,8 +215,6 @@ const CoursesCrud = () => {
           </Button>
         </ModalFooter>
       </Modal>
-
-      
     </>
   );
 };
