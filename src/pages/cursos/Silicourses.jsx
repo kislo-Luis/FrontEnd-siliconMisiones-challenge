@@ -4,9 +4,6 @@ import axios from "axios";
 import { Card } from "../../components/Card/Card";
 import "./Silicourses.css"
 
-
-
-
 function SiliCourses() {
   const [courses, setListCourses] = useState([]);
 

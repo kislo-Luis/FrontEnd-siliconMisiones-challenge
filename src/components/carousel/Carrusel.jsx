@@ -13,13 +13,13 @@ const items = [
   {
     src: "/edificio.jpeg",
     altText: "Slide 1",
-    caption: "Slide 1",
+    caption: "Bienvenidos a Silicon Misiones",
     key: 1,
   },
   {
     src: "/alumnos.jpeg",
     altText: "Slide 2",
-    caption: "Slide 2",
+    caption: "Creando talento IT en el nordeste argentino",
     key: 2,
   },
 ];
@@ -51,6 +51,7 @@ export const Carrusel = (args) => {
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
         key={item.src}
+        className="custom-img"
       >
         <img src={item.src} alt={item.altText} />
         <CarouselCaption
@@ -62,30 +63,39 @@ export const Carrusel = (args) => {
   });
 
   return (
-    <Carousel
-      activeIndex={activeIndex}
-      next={next}
-      previous={previous}
-      {...args}
-    >
-      <CarouselIndicators
-        items={items}
+    <div className="carrou">
+      
+      <Carousel
         activeIndex={activeIndex}
-        onClickHandler={goToIndex}
-      />
-      {slides}
+        next={next}
+        previous={previous}
+        {...args}
+        style={{
+          width: "50rem",                    
+        }}
+      >
+        <CarouselIndicators
+          items={items}
+          activeIndex={activeIndex}
+          onClickHandler={goToIndex}
+          style={{
+            backgroundColor:"blue"         
+          }}
+        />
+        {slides}
 
-      <CarouselControl
-        direction="prev"
-        directionText="Previous"
-        onClickHandler={previous}
-      />
+        <CarouselControl
+          direction="prev"
+          directionText="Previous"
+          onClickHandler={previous}          
+        />
 
-      <CarouselControl
-        direction="next"
-        directionText="Next"
-        onClickHandler={next}
-      />
-    </Carousel>
+        <CarouselControl
+          direction="next"
+          directionText="Next"
+          onClickHandler={next}
+        />
+      </Carousel>
+    </div>
   );
 };

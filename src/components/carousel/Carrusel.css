@@ -1,8 +1,11 @@
 
 
-.carrou{
-    background-color: aqua;
-    justify-content:space-evenly;
+.carrou{    
     margin-top: 5rem;
-   
+    margin-left: 7rem;   
+}
+
+.custom-img{
+    width: 500px;
+    height: 500px;
 }

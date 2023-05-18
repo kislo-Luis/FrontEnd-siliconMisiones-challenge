@@ -12,6 +12,7 @@ import {
   ModalHeader,
   ModalBody,
 } from "reactstrap";
+import { redirect, useNavigate } from "react-router-dom";
 
 const LoginFormModal = () => {
   const [modal, setModal] = useState(false);
@@ -29,23 +30,27 @@ const LoginFormModal = () => {
           password: password.value,
         });
         alert("acceso valido");
+        localStorage.setItem("admin", true);
         const token = response.data;
-        if (token) {
-          localStorage.setItem("SoyElAdmin", true);
-          setLogin(true);
-        } else {
-          localStorage.setItem("SoyElAdmin", false);
+        
+        if (token) {          
+          console.log(token)          
+          setLogin(true);         
         }
       } catch (error) {
         alert("credenciales invalidas, intente nuevamente");
+        localStorage.setItem("admin", false);
         console.log(error);
       }
     };
     login();
   };
+ ;
 
-  const handleRemoveAdmin = () => {
-    localStorage.removeItem("SoyElAdmin");
+ const redirect = useNavigate()
+  const handleRemoveAdmin = () => {    
+    localStorage.removeItem("admin")
+    redirect("/");
     setLogin(false);
   };
 

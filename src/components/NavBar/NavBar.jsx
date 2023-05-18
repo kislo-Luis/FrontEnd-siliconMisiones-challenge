@@ -1,8 +1,17 @@
-import { NavLink } from "react-router-dom";
-import { Navbar as NavbarReacstrap } from "reactstrap";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Navbar as NavbarReacstrap, Button } from "reactstrap";
 import { ButonModal } from "../Modal/ButonModal";
 
 export const Navbar = () => {
+  const redirect = useNavigate();
+  const cursos = () => {
+    redirect("/cursos");
+  };
+
+  const cursosCrud = () => {
+    redirect("/cursosCrud");
+  };
+
   return (
     <div className="bar">
       <NavbarReacstrap>
@@ -14,8 +23,15 @@ export const Navbar = () => {
           />
         </NavLink>
 
-        <NavLink to="/cursos">Cursos</NavLink>
-        <NavLink to="/cursosCrud">AdminCursos</NavLink>
+        <Button color="success" onClick={cursos}>
+          {" "}
+          Cursos{" "}
+        </Button>
+        <Button color="primary" onClick={cursosCrud}>
+          {" "}
+          Admin-cursos{" "}
+        </Button>
+
         <ButonModal />
       </NavbarReacstrap>
     </div>
