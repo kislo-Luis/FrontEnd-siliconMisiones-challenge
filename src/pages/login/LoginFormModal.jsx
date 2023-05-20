@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { useState } from "react";
-
 import {
   Label,
   Form,
@@ -11,53 +9,58 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
+  ModalFooter,
 } from "reactstrap";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LoginFormModal = () => {
   const [modal, setModal] = useState(false);
   const [isLogin, setLogin] = useState(false);
+  const [confirmModal, setConfirmModal] = useState(false);
 
   const toggle = () => setModal(!modal);
+  const toggleConfirmModal = () => setConfirmModal(!confirmModal);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const { nickname, password } = document.forms[0];
-    const login = async () => {
-      try {
-        const response = await axios.post("http://localhost:4000/login", {
-          nickname: nickname.value,
-          password: password.value,
-        });
-        alert("acceso valido");
-        localStorage.setItem("admin", true);
-        const token = response.data;
-        
-        if (token) {          
-          console.log(token)          
-          setLogin(true);         
-        }
-      } catch (error) {
-        alert("credenciales invalidas, intente nuevamente");
-        localStorage.setItem("admin", false);
-        console.log(error);
+    const { nickname, password } = event.target.elements;
+    try {
+      const response = await axios.post("http://localhost:4000/login", {
+        nickname: nickname.value,
+        password: password.value,
+      });
+      alert("Acceso válido");
+      localStorage.setItem("admin", true)
+      const token = response.data;
+      if (token) {
+        console.log(token);
+        localStorage.setItem("admin", true)
+        setLogin(true);
+        toggle(); 
       }
-    };
-    login();
+    } catch (error) {
+      alert("Credenciales inválidas, intente nuevamente");
+      console.log(error);
+    }
   };
- ;
-
- const redirect = useNavigate()
-  const handleRemoveAdmin = () => {    
-    localStorage.removeItem("admin")
+  const redirect = useNavigate();
+  const handleRemoveAdmin = () => {
+    localStorage.removeItem("admin");
     redirect("/");
     setLogin(false);
+    toggleConfirmModal(); 
   };
-
+  const handleLogout = () => {
+    if (isLogin) {
+      toggleConfirmModal(); 
+    } else {
+      toggle(); 
+    }
+  };
   return (
     <>
-      <Button onClick={toggle}>
-        {isLogin ? "Cerrar sesión!" : "Iniciar sesión"}
+      <Button onClick={handleLogout}>
+        {isLogin ? "Cerrar sesión" : "Iniciar sesión"}
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>
@@ -66,8 +69,7 @@ const LoginFormModal = () => {
         <ModalBody>
           {isLogin ? (
             <>
-              <p>¡Bienvenido!</p>
-              <Button onClick={handleRemoveAdmin}>Cerrar sesión</Button>
+              <p>¡...!</p>
             </>
           ) : (
             <Form onSubmit={handleSubmit}>
@@ -77,7 +79,7 @@ const LoginFormModal = () => {
                   type="text"
                   name="nickname"
                   id="nickname"
-                  placeholder="Nickname"
+                  placeholder="Ingrese su Nickname"
                 />
               </FormGroup>
               <FormGroup>
@@ -89,13 +91,29 @@ const LoginFormModal = () => {
                   placeholder="Ingrese su contraseña"
                 />
               </FormGroup>
-              <Button type="submit">Iniciar sesión</Button>
+                <Button type="submit" color="primary">Iniciar sesión</Button>{"  "}
+                <Button color="secondary" onClick={toggle}>Cancelar</Button>
             </Form>
           )}
         </ModalBody>
       </Modal>
-    </>
+      <Modal isOpen={confirmModal} toggle={toggleConfirmModal}>
+          <ModalHeader toggle={toggleConfirmModal}>Confirmar cierre de sesión</ModalHeader>
+                <ModalBody>¿Está seguro de que desea cerrar sesión?</ModalBody>
+                    <ModalFooter>
+                      <Button color="primary" onClick={handleRemoveAdmin}>Confirmar</Button>                              
+                    </ModalFooter>
+      </Modal>
+
+
+  </>
   );
 };
-
 export default LoginFormModal;
+
+
+
+
+
+
+

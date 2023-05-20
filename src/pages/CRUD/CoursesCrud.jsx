@@ -119,13 +119,18 @@ const handleSubmit = (event) => {
   }
 };
 
+// if (localStorage.getItem("admin", false)){
+  
+//   return <Navigate to="/"/>
+//   ;  
+// }
 if (localStorage.getItem("admin")===null){
   
   return <Navigate to="/"/>
   ;
-   
-   
 }
+
+
 return (
   <>
     {courses.length === 0 && <p>cargando...</p>}
