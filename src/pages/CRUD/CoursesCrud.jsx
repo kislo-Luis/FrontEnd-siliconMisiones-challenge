@@ -119,13 +119,9 @@ const handleSubmit = (event) => {
   }
 };
 
-// if (localStorage.getItem("admin", false)){
-  
-//   return <Navigate to="/"/>
-//   ;  
-// }
+
 if (localStorage.getItem("admin")===null){
-  
+  alert("Debe iniciar sesión para acceder")
   return <Navigate to="/"/>
   ;
 }

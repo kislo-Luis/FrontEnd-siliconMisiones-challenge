@@ -11,6 +11,9 @@ export const Navbar = () => {
   const cursosCrud = () => {
     redirect("/cursosCrud");
   };
+  const alumnosCrud = () => {
+    redirect("/alumnos");
+  };
 
   return (
     <div className="bar">
@@ -30,6 +33,10 @@ export const Navbar = () => {
         <Button color="primary" onClick={cursosCrud}>
           {" "}
           Admin-cursos{" "}
+        </Button>
+        <Button color="primary" onClick={alumnosCrud}>
+          {" "}
+          Alumnos{" "}
         </Button>
 
         <ButonModal />
