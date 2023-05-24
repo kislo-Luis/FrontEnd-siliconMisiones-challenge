@@ -48,7 +48,7 @@ export const AlumnosCrud = () => {
           </Link>
 
           {"  "}
-          <Button color="danger" onClick={() => id}>
+          <Button color="danger" onClick={() =>handleDelete(id)}>
             Eliminar
           </Button>
         </>
@@ -65,6 +65,19 @@ export const AlumnosCrud = () => {
     };
     getAlumnos();
   }, []);
+
+  const handleDelete = (id) => {
+    axios
+      .delete(`http://localhost:4000/alumnos/${id}`)
+      .then((response) => {
+        console.log(response);
+        alert("se elimino con exito el curso");
+        setListAlumnos(alumnos.filter((alumno) => alumno.id !== id));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -114,12 +127,13 @@ export const AlumnosCrud = () => {
   return (
     <>
       {alumnos.length === 0 && <p>cargando...</p>}
-
+      
       <div className="container">
         <div className="button">
-          <Button color="primary" onClick={toggle}>
-            + Nuevo curso:
+          <Button color="warning" onClick={toggle}>
+            + Nuevo alumno:
           </Button>
+         
         </div>
 
         <div className="table">

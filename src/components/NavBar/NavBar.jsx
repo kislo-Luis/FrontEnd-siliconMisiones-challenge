@@ -26,7 +26,7 @@ export const Navbar = () => {
           />
         </NavLink>
 
-        <Button color="success" onClick={cursos}>
+        <Button color="primary" onClick={cursos}>
           {" "}
           Cursos{" "}
         </Button>
