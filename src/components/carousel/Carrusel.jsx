@@ -11,13 +11,13 @@ import {
 
 const items = [
   {
-    src: "/edificio.jpeg",
+    src: "/portada.png",
     altText: "Slide 1",
     caption: "Bienvenidos a Silicon Misiones",
     key: 1,
   },
   {
-    src: "/alumnos.jpeg",
+    src: "/alumnos.jpeg",    
     altText: "Slide 2",
     caption: "Creando talento IT en el nordeste argentino",
     key: 2,
@@ -52,6 +52,7 @@ export const Carrusel = (args) => {
         onExited={() => setAnimating(false)}
         key={item.src}
         className="custom-img"
+        
       >
         <img src={item.src} alt={item.altText} />
         <CarouselCaption
@@ -71,16 +72,14 @@ export const Carrusel = (args) => {
         previous={previous}
         {...args}
         style={{
-          width: "50rem",                    
+          width: "100rem",                    
         }}
       >
         <CarouselIndicators
           items={items}
           activeIndex={activeIndex}
           onClickHandler={goToIndex}
-          style={{
-            backgroundColor:"blue"         
-          }}
+          
         />
         {slides}
 

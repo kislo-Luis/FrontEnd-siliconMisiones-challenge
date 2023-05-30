@@ -120,7 +120,7 @@ const handleSubmit = (event) => {
 };
 
 
-if (localStorage.getItem("admin")===null){
+if (localStorage.getItem("admin")===null){  
   alert("Debe iniciar sesión para acceder")
   return <Navigate to="/"/>
   ;
