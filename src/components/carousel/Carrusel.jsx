@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Carrusel.css";
+ import "./Carrusel.css";
 
 import {
   Carousel,
@@ -13,13 +13,13 @@ const items = [
   {
     src: "/portada.png",
     altText: "Slide 1",
-    caption: "Bienvenidos a Silicon Misiones",
+    caption: "",
     key: 1,
   },
   {
-    src: "/alumnos.jpeg",    
+    src: "/talento.png",    
     altText: "Slide 2",
-    caption: "Creando talento IT en el nordeste argentino",
+    caption: "",
     key: 2,
   },
 ];
@@ -71,9 +71,9 @@ export const Carrusel = (args) => {
         next={next}
         previous={previous}
         {...args}
-        style={{
-          width: "100rem",                    
-        }}
+        // style={{
+        //   width: "100rem",                    
+        // }}
       >
         <CarouselIndicators
           items={items}
