@@ -1,3 +1,7 @@
+En esta app podremos visualizar los cursos disponibles en la web de 'SILICON MISIONES', si tenemos credenciales de ingreso podremos crear, eliminar y actualizar datos en la tabla 'cursos' ó en la tabla 'alumnos'. La base de datos esta configurada con sequelize, PostgreSQL.
+Al clonar el repositorio es necesario correr elcomando npm i --y  luego npm start.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
